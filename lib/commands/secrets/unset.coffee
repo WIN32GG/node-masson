@@ -5,6 +5,7 @@ yaml = require 'js-yaml'
 
 module.exports = ({params}, config, callback) ->
   store = secrets params
+  params.property = params.property[0]
   store.get params.property, (err, value) ->
     unless value
       process.stderr.write "Property \"#{params.property}\" does not exist." + '\n'

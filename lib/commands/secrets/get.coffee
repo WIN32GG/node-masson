@@ -6,6 +6,7 @@ yaml = require 'js-yaml'
 module.exports = ({params}, config, callback) ->
   store = secrets params
   store.get (err, secrets) ->
+    params.property = params.property[0]
     secrets = get secrets, params.property
     if err
       process.stderr.write "#{err.message}" + '\n'
